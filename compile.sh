@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-# Compile from mac
+bootimage build
 
-cargo rustc -- -C link-arg=-lSystem
+# Can run this with
+#bootimage run
