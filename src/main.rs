@@ -5,21 +5,21 @@ mod vga_buffer;
 use core::panic::PanicInfo;
 
 #[panic_handler]
-fn panic(_info: &PanicInfo) -> ! {
+fn panic(info: &PanicInfo) -> ! {
+    println!("{}", info);
+
     loop {}
 }
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    use core::fmt::Write;
-
-    write!(
-        vga_buffer::WRITER.lock(),
+    println!(
         "The numbers are {} and {} and this is a really long line so what happens now",
         42,
         1.0 / 3.0
-    )
-    .unwrap();
+    );
+
+    panic!("OH SHIT");
 
     loop {}
 }
