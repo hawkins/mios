@@ -24,6 +24,12 @@ bootimage build
 bootimage run
 ```
 
+## Testing
+
+```bash
+cargo test
+```
+
 ## Dependencies
 
 - rust nightly
