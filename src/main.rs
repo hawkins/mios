@@ -11,6 +11,15 @@ fn panic(_info: &PanicInfo) -> ! {
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    vga_buffer::print_something();
+    use core::fmt::Write;
+
+    write!(
+        vga_buffer::WRITER.lock(),
+        "The numbers are {} and {} and this is a really long line so what happens now",
+        42,
+        1.0 / 3.0
+    )
+    .unwrap();
+
     loop {}
 }
